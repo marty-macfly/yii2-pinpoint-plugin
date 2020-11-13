@@ -7,7 +7,7 @@ if (!function_exists('pinpoint_start_trace'))
 }
 
 //Cached class
-define('AOP_CACHE_DIR', __DIR__ . '/cache/');
+define('AOP_CACHE_DIR', __DIR__ . '/../../../../runtime/pinpoint/cache/');
 // where to load pinpoint plugins
 define('PLUGINS_DIR', __DIR__ . '/plugins/');
 
@@ -39,4 +39,4 @@ function pinpoint_user_class_loader_hook()
 
 pinpoint_user_class_loader_hook();
 
-require_once __DIR__. '/../vendor/naver/pinpoint-php-aop/auto_pinpointed.php';
+require_once __DIR__. '/../../../naver/pinpoint-php-aop/auto_pinpointed.php';
