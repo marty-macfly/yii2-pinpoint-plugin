@@ -1,0 +1,28 @@
+{
+	"name": "macfly/yii2-pinpoint-plugin",
+	"description": "Pinpoint plugin to instrument Yii2 framework",
+	"keywords": ["yii2", "pinpoint"],
+	"type": "yii2-extension",
+	"license": "BSD-3-Clause",
+	"support": {
+		"issues": "https://github.com/marty-macfly/yii2-pinpoint-plugin/issues",
+		"source": "https://github.com/marty-macfly/yii2-pinpoint-plugin"
+	},
+	"authors": [
+		{
+			"name": "Charles DELFLY",
+			"email": "mmacfly@gmail.com"
+		}
+	],
+	"minimum-stability": "stable",
+	"require": {
+		"yiisoft/yii2": "~2.0.5",
+		"naver/pinpoint-php-aop": "v1.0.1",
+        "nikic/php-parser": "v4.10.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Plugins\\": "src/plugins/"
+		}
+	}
+}
