@@ -124,14 +124,14 @@ class PerRequestPlugins
             pinpoint_add_clue('Ah', $this->ah);
         }
 
-        if(isset($_SERVER['NGINX_PROXY']) || array_key_exists('NGINX_PROXY', $_SERVER))
+        if(isset($_SERVER['HTTP_PINPOINT_PROXYNGINX']) || array_key_exists('HTTP_PINPOINT_PROXYNGINX', $_SERVER))
         {
-            pinpoint_add_clue("NP", $_SERVER['NGINX_PROXY']);
+            pinpoint_add_clue("NP", $_SERVER['HTTP_PINPOINT_PROXYNGINX']);
         }
 
-        if(isset($_SERVER['APACHE_PROXY']) || array_key_exists('APACHE_PROXY', $_SERVER))
+        if(isset($_SERVER['HTTP_PINPOINT_PROXYAPACHE']) || array_key_exists('HTTP_PINPOINT_PROXYAPACHE', $_SERVER))
         {
-            pinpoint_add_clue("AP", $_SERVER['APACHE_PROXY']);
+            pinpoint_add_clue("AP", $_SERVER['HTTP_PINPOINT_PROXYAPACHE']);
         }
 
         if(isset($_SERVER['SAMPLED']) || array_key_exists('SAMPLED', $_SERVER))
