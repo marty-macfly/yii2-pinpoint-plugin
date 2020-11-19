@@ -49,7 +49,7 @@ class PerRequestPlugins
 
     private function initTrace()
     {
-        while (pinpoint_end_trace() >0);
+        while (pinpoint_end_trace() > 0);
     }
 
     private function __construct()
