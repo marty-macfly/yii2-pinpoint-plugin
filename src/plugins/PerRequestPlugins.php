@@ -57,10 +57,16 @@ class PerRequestPlugins
         $this->initTrace();
 
         pinpoint_start_trace();
+        pinpoint_add_clue("stp", PHP);
+        pinpoint_add_clue("name", "PHP Request: ". php_sapi_name());
 
         if(isset($_SERVER['REQUEST_URI']))
         {
             pinpoint_add_clue("uri", $_SERVER['REQUEST_URI']);
+        }
+        elseif(isset($_SERVER['argv']))
+        {
+            pinpoint_add_clue("uri", implode(" ", $_SERVER['argv']));
         }
 
         if(isset($_SERVER['REMOTE_ADDR']))
@@ -72,9 +78,6 @@ class PerRequestPlugins
         {
             pinpoint_add_clue("server", $_SERVER["HTTP_HOST"]);
         }
-
-        pinpoint_add_clue("stp", PHP);
-        pinpoint_add_clue("name", "PHP Request");
 
         $this->app_name = defined('APPLICATION_NAME') ? APPLICATION_NAME : pinpoint_app_name();
         pinpoint_add_clue("appname", $this->app_name);
