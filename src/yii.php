@@ -39,4 +39,4 @@ function pinpoint_user_class_loader_hook()
 
 pinpoint_user_class_loader_hook();
 
-require_once __DIR__. '/../../../naver/pinpoint-php-aop/auto_pinpointed.php';
+require_once __DIR__ . '/../../../naver/pinpoint-php-aop/auto_pinpointed.php';
