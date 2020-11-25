@@ -31,6 +31,12 @@ abstract class Candy
     protected $args;
     protected $ret = null;
 
+    // Partial trace variable
+    protected $app_name;
+    protected $app_id;
+    protected $tid;
+    protected $psid;
+
     public function __construct($apId, $who, &...$args)
     {
         /// todo start_this_aspect_trace
@@ -44,7 +50,32 @@ abstract class Candy
 
     public function __destruct()
     {
+        if (isset($this->tid))
+        {
+            while (pinpoint_end_trace() > 1);
+        }
+
         pinpoint_end_trace();
+    }
+
+    protected function startPartialTrace()
+    {
+        $this->app_name = PerRequestPlugins::instance()->app_name;
+        $this->app_id = PerRequestPlugins::instance()->app_id;
+        $this->tid = PerRequestPlugins::instance()->tid;
+        $this->psid = PerRequestPlugins::instance()->sid;
+
+        // End all previous started tracing
+        while (pinpoint_end_trace() > 0);
+
+        pinpoint_start_trace();
+        pinpoint_add_clue("stp", PHP);
+        pinpoint_add_clue("name", "PHP Request: ". php_sapi_name());
+        pinpoint_add_clue("server", isset($_SERVER['argv']) ? implode(" ", $_SERVER['argv']) : '');
+        pinpoint_add_clue("appname", $this->app_name);
+        pinpoint_add_clue("tid", PerRequestPlugins::instance()->generateTransactionID());
+        pinpoint_add_clue("sid", PerRequestPlugins::instance()->generateSpanID());
+        pinpoint_add_clue('appid', $this->app_id);
     }
 
     abstract function onBefore();
