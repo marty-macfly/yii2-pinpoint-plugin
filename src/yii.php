@@ -13,7 +13,7 @@ define('PLUGINS_DIR', __DIR__ . '/plugins/');
 
 if (defined('YII_ENV') && YII_ENV == "dev")
 {
-    define('PINPOINT_ENV', 'dev');
+    define('PINPOINT_USE_CACHE','no');
 }
 
 define('APPLICATION_ID', isset($config['id']) ? $config['id'] : 'yii' );
@@ -39,4 +39,4 @@ function pinpoint_user_class_loader_hook()
 
 pinpoint_user_class_loader_hook();
 
-require_once __DIR__ . '/../../../naver/pinpoint-php-aop/auto_pinpointed.php';
+require_once __DIR__ . '/../../../pinpoint-apm/pinpoint-php-aop/auto_pinpointed.php';
