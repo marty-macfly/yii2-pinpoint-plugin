@@ -17,7 +17,7 @@
 	"minimum-stability": "stable",
 	"require": {
 		"yiisoft/yii2": "~2.0.5",
-		"naver/pinpoint-php-aop": "^v2.0.1"
+		"pinpoint-apm/pinpoint-php-aop": "^v2.0.1"
 	},
 	"autoload": {
 		"psr-4": {
