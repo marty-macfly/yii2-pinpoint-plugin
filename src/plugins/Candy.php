@@ -60,10 +60,10 @@ abstract class Candy
 
     protected function startPartialTrace()
     {
-        $this->app_name = PerRequestPlugins::instance()->app_name;
-        $this->app_id = PerRequestPlugins::instance()->app_id;
-        $this->tid = PerRequestPlugins::instance()->tid;
-        $this->psid = PerRequestPlugins::instance()->sid;
+        $this->app_name = Yii2ReqPlugins::instance()->app_name;
+        $this->app_id = Yii2ReqPlugins::instance()->app_id;
+        $this->tid = Yii2ReqPlugins::instance()->tid;
+        $this->psid = Yii2ReqPlugins::instance()->sid;
 
         // End all previous started tracing
         while (pinpoint_end_trace() > 0);
@@ -73,8 +73,8 @@ abstract class Candy
         pinpoint_add_clue(PP_INTERCEPTOR_NAME, "PHP Request: ". php_sapi_name());
         pinpoint_add_clue(PP_REQ_SERVER, isset($_SERVER['argv']) ? implode(" ", $_SERVER['argv']) : '');
         pinpoint_add_clue(PP_APP_NAME, $this->app_name);
-        pinpoint_add_clue(PP_TRANSCATION_ID, PerRequestPlugins::instance()->generateTransactionID());
-        pinpoint_add_clue(PP_SPAN_ID, PerRequestPlugins::instance()->generateSpanID());
+        pinpoint_add_clue(PP_TRANSCATION_ID, Yii2ReqPlugins::instance()->generateTransactionID());
+        pinpoint_add_clue(PP_SPAN_ID, Yii2ReqPlugins::instance()->generateSpanID());
         pinpoint_add_clue(PP_APP_ID, $this->app_id);
     }
 
