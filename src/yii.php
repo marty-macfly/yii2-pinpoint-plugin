@@ -20,24 +20,4 @@ define('APPLICATION_NAME', isset($config['name']) ? $config['name'] : APPLICATIO
 
 define('PP_REQ_PLUGINS', '\Plugins\Yii2ReqPlugins');
 
-/**
- * unregister Yii class loader
- * wrapper with PinpointYiiClassLoader
- */
-function pinpoint_user_class_loader_hook()
-{
-    $loaders = spl_autoload_functions();
-    foreach ($loaders as $loader)
-    {
-        if(is_array($loader) && is_string($loader[0]) && $loader[0] == 'Yii')
-        {
-            spl_autoload_unregister($loader);
-            spl_autoload_register(['Plugins\PinpointYiiClassLoader', 'autoload'], true, false);
-            break;
-        }
-    }
-}
-
-pinpoint_user_class_loader_hook();
-
 require_once __DIR__ . '/../../../pinpoint-apm/pinpoint-php-aop/auto_pinpointed.php';
