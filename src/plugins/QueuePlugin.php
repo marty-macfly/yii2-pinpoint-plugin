@@ -22,7 +22,7 @@ class QueuePlugin extends Candy
 
     function onBefore()
     {
-        pinpoint_add_clue(PP_SERVER_TYPE, PHP_METHOD);
+        pinpoint_add_clue(PP_SERVER_TYPE, PP_PHP_METHOD);
         pinpoint_add_clues(PP_PHP_ARGS, sprintf("[id:%s][ttr:%s][attempt:%s]", $this->args[0], $this->args[2], $this->args[3]));
     }
 

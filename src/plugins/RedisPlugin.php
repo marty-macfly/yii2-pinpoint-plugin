@@ -22,7 +22,7 @@ class RedisPlugin extends Candy
         }
         else
         {
-            pinpoint_add_clue(PP_SERVER_TYPE, PHP_METHOD);
+            pinpoint_add_clue(PP_SERVER_TYPE, PP_PHP_METHOD);
             if ($this->apId !== 'yii\redis\Connection::sendCommandInternal')
             {
                 pinpoint_add_clues(PP_PHP_ARGS, sprintf("%s %s", isset($this->args[0]) ? $this->args[0] : '', isset($this->args[1][0]) ? $this->args[1][0] : ''));
