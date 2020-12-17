@@ -10,7 +10,7 @@ class MongodbPlugin extends Candy
 {
     function onBefore()
     {
-        pinpoint_add_clue(PP_SERVER_TYPE, MONGODB);
+        pinpoint_add_clue(PP_SERVER_TYPE, PP_MONGODB);
         $db = ($this->who instanceof \yii\mongodb\Connection) ? $this->who : $this->who->db;
         pinpoint_add_clue(PP_DESTINATION, $db->dsn);
 

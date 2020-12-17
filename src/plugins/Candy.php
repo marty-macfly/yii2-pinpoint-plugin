@@ -69,7 +69,7 @@ abstract class Candy
         while (pinpoint_end_trace() > 0);
 
         pinpoint_start_trace();
-        pinpoint_add_clue(PP_SERVER_TYPE, PHP);
+        pinpoint_add_clue(PP_SERVER_TYPE, PP_PHP);
         pinpoint_add_clue(PP_INTERCEPTOR_NAME, "PHP Request: ". php_sapi_name());
         pinpoint_add_clue(PP_REQ_SERVER, isset($_SERVER['argv']) ? implode(" ", $_SERVER['argv']) : '');
         pinpoint_add_clue(PP_APP_NAME, $this->app_name);

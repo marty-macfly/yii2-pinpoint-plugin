@@ -36,7 +36,7 @@ class HttpClientPlugin extends Candy
         {
             pinpoint_start_trace();
             pinpoint_add_clue(PP_INTERCEPTOR_NAME, strtoupper($request->getMethod()));
-            pinpoint_add_clue(PP_SERVER_TYPE, PINPOINT_PHP_REMOTE);
+            pinpoint_add_clue(PP_SERVER_TYPE, PP_PHP_REMOTE);
             pinpoint_add_clue(PP_DESTINATION, $this->getHostFromURL($request->getFullUrl()));
             pinpoint_add_clues(PP_PHP_ARGS, $request->getFullUrl());
             pinpoint_add_clues(PP_HTTP_URL, $request->getFullUrl());

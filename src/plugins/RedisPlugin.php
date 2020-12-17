@@ -17,7 +17,7 @@ class RedisPlugin extends Candy
             {
                 return;
             }
-            pinpoint_add_clue(PP_SERVER_TYPE, REDIS);
+            pinpoint_add_clue(PP_SERVER_TYPE, PP_REDIS);
             pinpoint_add_clue(PP_DESTINATION, $this->who->connectionString . ', database=' . $this->who->database);
         }
         else
