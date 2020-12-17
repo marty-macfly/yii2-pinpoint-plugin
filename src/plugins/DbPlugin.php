@@ -50,6 +50,6 @@ class DbPlugin extends Candy
 
     function onException($e)
     {
-        pinpoint_add_clue(PP_ADD_EXCEPTION,$e->getMessage());
+        pinpoint_add_clue(PP_ADD_EXCEPTION, $e->getMessage());
     }
 }
