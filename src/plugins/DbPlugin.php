@@ -3,8 +3,8 @@
 namespace Plugins;
 // https://github.com/yiisoft/yii2/blob/master/framework/db/Connection.php
 
-///@hook:yii\db\Connection::open
-///@hook:yii\db\Connection::close
+// yii\db\Connection::open
+// yii\db\Connection::close
 ///@hook:yii\db\Command::queryInternal
 ///@hook:yii\db\Command::internalExecute
 class DbPlugin extends Candy
