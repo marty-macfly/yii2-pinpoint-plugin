@@ -10,9 +10,9 @@ class MongodbPlugin extends Candy
 {
     function onBefore()
     {
-        pinpoint_add_clue("stp", MONGODB);
+        pinpoint_add_clue(PP_SERVER_TYPE, MONGODB);
         $db = ($this->who instanceof \yii\mongodb\Connection) ? $this->who : $this->who->db;
-        pinpoint_add_clue("dst", $db->dsn);
+        pinpoint_add_clue(PP_DESTINATION, $db->dsn);
 
         if ($this->who instanceof \yii\mongodb\Command)
         {
@@ -28,6 +28,6 @@ class MongodbPlugin extends Candy
 
     function onException($e)
     {
-        pinpoint_add_clue("EXP",$e->getMessage());
+        pinpoint_add_clue(PP_ADD_EXCEPTION,$e->getMessage());
     }
 }

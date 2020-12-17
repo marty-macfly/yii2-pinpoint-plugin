@@ -17,12 +17,12 @@ class RedisPlugin extends Candy
             {
                 return;
             }
-            pinpoint_add_clue("stp",REDIS);
-            pinpoint_add_clue("dst", $this->who->connectionString . ', database=' . $this->who->database);
+            pinpoint_add_clue(PP_SERVER_TYPE, REDIS);
+            pinpoint_add_clue(PP_DESTINATION, $this->who->connectionString . ', database=' . $this->who->database);
         }
         else
         {
-            pinpoint_add_clue("stp", PHP_METHOD);
+            pinpoint_add_clue(PP_SERVER_TYPE, PHP_METHOD);
             if ($this->apId !== 'yii\redis\Connection::sendCommandInternal')
             {
                 pinpoint_add_clues(PHP_ARGS, sprintf("%s %s", isset($this->args[0]) ? $this->args[0] : '', isset($this->args[1][0]) ? $this->args[1][0] : ''));
@@ -37,6 +37,6 @@ class RedisPlugin extends Candy
 
     function onException($e)
     {
-        pinpoint_add_clue("EXP",$e->getMessage());
+        pinpoint_add_clue(PP_ADD_EXCEPTION,$e->getMessage());
     }
 }

@@ -13,7 +13,7 @@ class QueuePlugin extends Candy
         if (preg_match('/\/listen.+--isolate\s+0/', $argv) === 1)
         {
             $this->startPartialTrace();
-            pinpoint_add_clue("uri", sprintf("[id:%s] %s", $args[0], $argv));
+            pinpoint_add_clue(PP_REQ_URI, sprintf("[id:%s] %s", $args[0], $argv));
         }
 
         array_unshift($args, $apId, $who);
@@ -22,7 +22,7 @@ class QueuePlugin extends Candy
 
     function onBefore()
     {
-        pinpoint_add_clue("stp", PHP_METHOD);
+        pinpoint_add_clue(PP_SERVER_TYPE, PHP_METHOD);
         pinpoint_add_clues(PHP_ARGS, sprintf("[id:%s][ttr:%s][attempt:%s]", $this->args[0], $this->args[2], $this->args[3]));
     }
 
@@ -33,6 +33,6 @@ class QueuePlugin extends Candy
 
     function onException($e)
     {
-        pinpoint_add_clue("EXP", $e->getMessage());
+        pinpoint_add_clue(PP_ADD_EXCEPTION, $e->getMessage());
     }
 }

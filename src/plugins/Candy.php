@@ -22,7 +22,7 @@
  */
 
 namespace Plugins;
-require_once "PluginsDefines.php";
+require_once "Common/PluginsDefines.php";
 
 abstract class Candy
 {
@@ -45,7 +45,7 @@ abstract class Candy
         $this->args = &$args;
 
         pinpoint_start_trace();
-        pinpoint_add_clue("name", $apId);
+        pinpoint_add_clue(PP_INTERCEPTOR_NAME, $apId);
     }
 
     public function __destruct()
@@ -69,13 +69,13 @@ abstract class Candy
         while (pinpoint_end_trace() > 0);
 
         pinpoint_start_trace();
-        pinpoint_add_clue("stp", PHP);
-        pinpoint_add_clue("name", "PHP Request: ". php_sapi_name());
-        pinpoint_add_clue("server", isset($_SERVER['argv']) ? implode(" ", $_SERVER['argv']) : '');
-        pinpoint_add_clue("appname", $this->app_name);
-        pinpoint_add_clue("tid", PerRequestPlugins::instance()->generateTransactionID());
-        pinpoint_add_clue("sid", PerRequestPlugins::instance()->generateSpanID());
-        pinpoint_add_clue('appid', $this->app_id);
+        pinpoint_add_clue(PP_SERVER_TYPE, PHP);
+        pinpoint_add_clue(PP_INTERCEPTOR_NAME, "PHP Request: ". php_sapi_name());
+        pinpoint_add_clue(PP_REQ_SERVER, isset($_SERVER['argv']) ? implode(" ", $_SERVER['argv']) : '');
+        pinpoint_add_clue(PP_APP_NAME, $this->app_name);
+        pinpoint_add_clue(PP_TRANSCATION_ID, PerRequestPlugins::instance()->generateTransactionID());
+        pinpoint_add_clue(PP_SPAN_ID, PerRequestPlugins::instance()->generateSpanID());
+        pinpoint_add_clue(PP_APP_ID, $this->app_id);
     }
 
     abstract function onBefore();

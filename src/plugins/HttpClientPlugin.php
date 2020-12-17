@@ -35,9 +35,9 @@ class HttpClientPlugin extends Candy
         foreach ($requests as $id => $request)
         {
             pinpoint_start_trace();
-            pinpoint_add_clue("name", strtoupper($request->getMethod()));
-            pinpoint_add_clue("stp", PINPOINT_PHP_REMOTE);
-            pinpoint_add_clue("dst", $this->getHostFromURL($request->getFullUrl()));
+            pinpoint_add_clue(PP_INTERCEPTOR_NAME, strtoupper($request->getMethod()));
+            pinpoint_add_clue(PP_SERVER_TYPE, PINPOINT_PHP_REMOTE);
+            pinpoint_add_clue(PP_DESTINATION, $this->getHostFromURL($request->getFullUrl()));
             pinpoint_add_clues(PHP_ARGS, $request->getFullUrl());
             pinpoint_add_clues(HTTP_URL, $request->getFullUrl());
             pinpoint_add_clues(HTTP_STATUS_CODE, is_array($ret) ? (string)($ret[$id]->getStatusCode()) : $ret->getStatusCode());
@@ -82,7 +82,7 @@ class HttpClientPlugin extends Candy
 
     function onException($e)
     {
-        pinpoint_add_clue("EXP",$e->getMessage());
+        pinpoint_add_clue(PP_ADD_EXCEPTION,$e->getMessage());
     }
 
     protected function getHostFromURL(string $url)

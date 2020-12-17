@@ -23,7 +23,7 @@ class ControllerPlugin extends Candy
 {
     public function onBefore()
     {
-        pinpoint_add_clue("stp", PHP_METHOD);
+        pinpoint_add_clue(PP_SERVER_TYPE, PHP_METHOD);
         if ($this->apId != 'yii\base\Controller::runAction'
             && isset($this->args[0])
             && $this->args[0] instanceof \yii\base\Action)
@@ -48,6 +48,6 @@ class ControllerPlugin extends Candy
 
     public function onException($e)
     {
-        pinpoint_add_clue("EXP", $e->getMessage());
+        pinpoint_add_clue(PP_ADD_EXCEPTION, $e->getMessage());
     }
 }

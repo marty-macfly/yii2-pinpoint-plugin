@@ -12,27 +12,27 @@ class DbPlugin extends Candy
     function onBefore()
     {
         $db = ($this->who instanceof \yii\db\Connection) ? $this->who : $this->who->db;
-        pinpoint_add_clue("dst", $db->dsn);
+        pinpoint_add_clue(PP_DESTINATION, $db->dsn);
 
         switch(substr($db->dsn, 0, strpos($db->dsn, ':')))
         {
             case 'cubrid':
-                pinpoint_add_clue("stp", CUBRID);
+                pinpoint_add_clue(PP_SERVER_TYPE, PP_CUBRID);
                 break;
             case 'mssql':
-                pinpoint_add_clue("stp", MSSQL_SERVER);
+                pinpoint_add_clue(PP_SERVER_TYPE, PP_MSSQL_SERVER);
                 break;
             case 'mysql':
-                pinpoint_add_clue("stp", MYSQL);
+                pinpoint_add_clue(PP_SERVER_TYPE, PP_MYSQL);
                 break;
             case 'oci':
-                pinpoint_add_clue("stp", ORACLE);
+                pinpoint_add_clue(PP_SERVER_TYPE, PP_ORACLE);
                 break;
             case 'pgsql':
-                pinpoint_add_clue("stp", POSTGRESQL);
+                pinpoint_add_clue(PP_SERVER_TYPE, PP_POSTGRESQL);
                 break;
             case 'sqlsrv': 
-                pinpoint_add_clue("stp", MSSQL_SERVER);
+                pinpoint_add_clue(PP_SERVER_TYPE, PP_MSSQL_SERVER);
                 break;
         }
 
@@ -50,6 +50,6 @@ class DbPlugin extends Candy
 
     function onException($e)
     {
-        pinpoint_add_clue("EXP",$e->getMessage());
+        pinpoint_add_clue(PP_ADD_EXCEPTION,$e->getMessage());
     }
 }
