@@ -39,8 +39,8 @@ class HttpClientPlugin extends Candy
             pinpoint_add_clue(PP_SERVER_TYPE, PINPOINT_PHP_REMOTE);
             pinpoint_add_clue(PP_DESTINATION, $this->getHostFromURL($request->getFullUrl()));
             pinpoint_add_clues(PP_PHP_ARGS, $request->getFullUrl());
-            pinpoint_add_clues(HTTP_URL, $request->getFullUrl());
-            pinpoint_add_clues(HTTP_STATUS_CODE, is_array($ret) ? (string)($ret[$id]->getStatusCode()) : $ret->getStatusCode());
+            pinpoint_add_clues(PP_HTTP_URL, $request->getFullUrl());
+            pinpoint_add_clues(PP_HTTP_STATUS_CODE, is_array($ret) ? (string)($ret[$id]->getStatusCode()) : $ret->getStatusCode());
 
             if ($request->hasHeaders())
             {
@@ -57,7 +57,7 @@ class HttpClientPlugin extends Candy
                 }
                 if (!empty($headers))
                 {
-                    pinpoint_add_clues(HTTP_IO, implode(';', $headers));
+                    pinpoint_add_clues(PP_HTTP_IO, implode(';', $headers));
                 }
             }
 
@@ -68,12 +68,12 @@ class HttpClientPlugin extends Candy
                 {
                     $cookies[] = $cookie->name . '=' . $cookie->value;
                 }
-                pinpoint_add_clues(HTTP_COOKIE, implode(';', $parts));
+                pinpoint_add_clues(PP_HTTP_COOKIE, implode(';', $parts));
             }
 
             if (($content = $request->getContent()) !== null)
             {
-                pinpoint_add_clues(HTTP_PARAM, $content);
+                pinpoint_add_clues(PP_HTTP_PARAM, $content);
             }
             
             pinpoint_end_trace();
