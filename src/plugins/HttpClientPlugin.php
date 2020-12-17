@@ -116,7 +116,7 @@ class HttpClientPlugin extends Candy
         return [
             'Pinpoint-Sampled' => 's1',
             'Pinpoint-Flags' => 0,
-            'Pinpoint-Papptype' => PHP,
+            'Pinpoint-Papptype' => PP_PHP,
             'Pinpoint-Pappname' => Yii2ReqPlugins::instance()->app_name,
             'Pinpoint-Host' => $host,
             'Pinpoint-Traceid' => Yii2ReqPlugins::instance()->tid,
