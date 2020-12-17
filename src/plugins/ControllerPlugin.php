@@ -28,11 +28,11 @@ class ControllerPlugin extends Candy
             && isset($this->args[0])
             && $this->args[0] instanceof \yii\base\Action)
         {
-            pinpoint_add_clues(PHP_ARGS, $this->args[0]->getUniqueId());
+            pinpoint_add_clues(PP_PHP_ARGS, $this->args[0]->getUniqueId());
         }
         else
         {
-            pinpoint_add_clues(PHP_ARGS, $this->who->getRoute());
+            pinpoint_add_clues(PP_PHP_ARGS, $this->who->getRoute());
         }
     }
 
@@ -42,7 +42,7 @@ class ControllerPlugin extends Candy
             || ($this->apId == 'yii\base\Controller::runAction'
                 && $this->who->request instanceof \yii\console\Request))
         {
-            pinpoint_add_clues(PHP_RETURN, var_export($ret, true));
+            pinpoint_add_clues(PP_PHP_RETURN, var_export($ret, true));
         }
     }
 

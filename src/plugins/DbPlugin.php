@@ -38,14 +38,14 @@ class DbPlugin extends Candy
 
         if ($this->who instanceof \yii\db\Command)
         {
-            pinpoint_add_clues(PHP_ARGS, sprintf("%s", isset($this->args[0]) ? $this->args[0] : ''));
+            pinpoint_add_clues(PP_PHP_ARGS, sprintf("%s", isset($this->args[0]) ? $this->args[0] : ''));
             pinpoint_add_clues(SQL, $this->who->getRawSql());
         }
     }
 
     function onEnd(&$ret)
     {
-//        pinpoint_add_clues(PHP_RETURN, print_r($ret, true));
+//        pinpoint_add_clues(PP_PHP_RETURN, print_r($ret, true));
     }
 
     function onException($e)
