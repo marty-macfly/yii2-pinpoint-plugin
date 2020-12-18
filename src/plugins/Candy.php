@@ -60,8 +60,8 @@ abstract class Candy
 
     protected function startPartialTrace()
     {
-        $this->app_name = Yii2ReqPlugins::instance()->app_name;
-        $this->app_id = Yii2ReqPlugins::instance()->app_id;
+        $this->app_name = Yii2ReqPlugins::instance()->app_name ?? (defined('APPLICATION_NAME') ? APPLICATION_NAME : pinpoint_app_name());
+        $this->app_id = Yii2ReqPlugins::instance()->app_id ?? (defined('APPLICATION_ID') ? APPLICATION_ID : pinpoint_app_id());
         $this->tid = Yii2ReqPlugins::instance()->tid;
         $this->psid = Yii2ReqPlugins::instance()->sid;
 
