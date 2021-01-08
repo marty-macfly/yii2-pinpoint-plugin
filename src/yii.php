@@ -18,6 +18,6 @@ define('PLUGINS_DIR', __DIR__ . '/Plugins/');
 define('APPLICATION_ID', isset($config['id']) ? $config['id'] : 'yii' );
 define('APPLICATION_NAME', isset($config['name']) ? $config['name'] : APPLICATION_ID);
 
-define('PP_REQ_PLUGINS', '\Plugins\Common\PerRequestPlugins');
+define('PP_REQ_PLUGINS', '\PluginsCore\Common\PerRequestPlugins');
 
 require_once __DIR__ . '/../../../pinpoint-apm/pinpoint-php-aop/auto_pinpointed.php';
