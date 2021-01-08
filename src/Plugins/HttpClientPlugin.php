@@ -114,15 +114,15 @@ class HttpClientPlugin extends Candy
             ];
         }
 
-        $nsid = Yii2ReqPlugins::instance()->generateSpanID();
+        $nsid = PerRequestPlugins::instance()->generateSpanID();
         return [
             'Pinpoint-Sampled' => 's1',
             'Pinpoint-Flags' => 0,
             'Pinpoint-Papptype' => PP_PHP,
-            'Pinpoint-Pappname' => Yii2ReqPlugins::instance()->app_name,
+            'Pinpoint-Pappname' => PerRequestPlugins::instance()->app_name,
             'Pinpoint-Host' => $host,
-            'Pinpoint-Traceid' => Yii2ReqPlugins::instance()->tid,
-            'Pinpoint-Pspanid' => Yii2ReqPlugins::instance()->sid,
+            'Pinpoint-Traceid' => PerRequestPlugins::instance()->tid,
+            'Pinpoint-Pspanid' => PerRequestPlugins::instance()->sid,
             'Pinpoint-Spanid' => $nsid,
         ];
     }
