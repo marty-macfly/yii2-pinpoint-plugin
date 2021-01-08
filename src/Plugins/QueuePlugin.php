@@ -2,6 +2,8 @@
 
 namespace Plugins;
 
+use pinpoint\PluginsCore\Common\Candy;
+
 ///@hook:yii\queue\cli\Queue::handleMessage
 class QueuePlugin extends Candy
 {

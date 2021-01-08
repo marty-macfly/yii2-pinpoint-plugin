@@ -3,6 +3,8 @@
 namespace Plugins;
 // https://github.com/yiisoft/yii2-redis/blob/master/src/Connection.php
 
+use pinpoint\PluginsCore\Common\Candy;
+
 ///@hook:yii\redis\Connection::open
 ///@hook:yii\redis\Connection::sendCommandInternal
 ///@hook:yii\redis\Connection::executeCommand

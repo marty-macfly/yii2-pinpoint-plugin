@@ -4,6 +4,8 @@ namespace Plugins;
 // https://github.com/yiisoft/yii2-httpclient/blob/master/src/CurlTransport.php
 // https://github.com/yiisoft/yii2-httpclient/blob/master/src/StreamTransport.php
 
+use pinpoint\PluginsCore\Common\Candy;
+
 ///@hook:yii\httpclient\CurlTransport::batchSend
 ///@hook:yii\httpclient\CurlTransport::send
 ///@hook:yii\httpclient\StreamTransport::send

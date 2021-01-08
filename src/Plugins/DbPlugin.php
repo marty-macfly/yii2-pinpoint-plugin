@@ -3,6 +3,8 @@
 namespace Plugins;
 // https://github.com/yiisoft/yii2/blob/master/framework/db/Connection.php
 
+use pinpoint\PluginsCore\Common\Candy;
+
 // yii\db\Connection::open
 // yii\db\Connection::close
 ///@hook:yii\db\Command::queryInternal

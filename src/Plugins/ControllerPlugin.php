@@ -16,6 +16,9 @@
 #-------------------------------------------------------------------------------
 
 namespace Plugins;
+
+use pinpoint\PluginsCore\Common\Candy;
+
 ///@hook:yii\base\Controller::afterAction
 ///@hook:yii\base\Controller::beforeAction
 ///@hook:yii\base\Controller::runAction
