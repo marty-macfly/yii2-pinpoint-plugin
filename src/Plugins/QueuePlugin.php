@@ -14,7 +14,7 @@ class QueuePlugin extends Candy
         // Special behavior for never ending worker
         if (preg_match('/\/listen.+--isolate\s+0/', $argv) === 1)
         {
-            $this->startPartialTrace();
+            PerRequestPlugins::instance()->sendTrace();
             pinpoint_add_clue(PP_REQ_URI, sprintf("[id:%s] %s", $args[0], $argv));
         }
 
