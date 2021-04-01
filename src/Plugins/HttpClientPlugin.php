@@ -70,7 +70,7 @@ class HttpClientPlugin extends Candy
                 {
                     $cookies[] = $cookie->name . '=' . $cookie->value;
                 }
-                pinpoint_add_clues(PP_HTTP_COOKIE, implode(';', $parts));
+                pinpoint_add_clues(PP_HTTP_COOKIE, implode(';', $cookies));
             }
 
             if (($content = $request->getContent()) !== null)
