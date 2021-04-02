@@ -5,6 +5,8 @@ namespace Plugins;
 
 use pinpoint\PluginsCore\Common\Candy;
 
+// Need to wait for stable version of pinpoint-apm/pinpoint-php-aop > v2.0.1
+// see https://github.com/pinpoint-apm/pinpoint-php-aop/issues/16
 // yii\db\Connection::open
 // yii\db\Connection::close
 ///@hook:yii\db\Command::queryInternal
