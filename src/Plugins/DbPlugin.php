@@ -5,8 +5,8 @@ namespace Plugins;
 
 use pinpoint\PluginsCore\Common\Candy;
 
-// yii\db\Connection::open
-// yii\db\Connection::close
+///@hook:yii\db\Connection::open
+///@hook:yii\db\Connection::close
 ///@hook:yii\db\Command::queryInternal
 ///@hook:yii\db\Command::internalExecute
 class DbPlugin extends Candy
