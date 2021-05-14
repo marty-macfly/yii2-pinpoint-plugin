@@ -19,7 +19,7 @@ class MongodbPlugin extends Candy
         if ($this->who instanceof \yii\mongodb\Command)
         {
             pinpoint_add_clues(PP_PHP_ARGS, sprintf("%s", isset($this->args[0]) ? $this->args[0] : ''));
-            pinpoint_add_clues(PP_SQL, print_r($this->document, true));
+            pinpoint_add_clues(PP_SQL, print_r($this->who->document, true));
         }
     }
 
